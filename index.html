@@ -5,101 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RPK - Rispek | Mobile Legends Gaming Squad</title>
+    <link rel="icon" type="image/png" href="pic/logo03.png">
     <meta name="description" content="Official website of RPK - Rispek Mobile Legends gaming squad. Meet our 10 elite players and their roles.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        @keyframes glow {
-            0%, 100% { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000; }
-            50% { text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000; }
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateX(-100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        
-        .gaming-font {
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .body-font {
-            font-family: 'Exo 2', sans-serif;
-        }
-        
-        .glow-text {
-            animation: glow 2s infinite;
-        }
-        
-        .pulse-effect {
-            animation: pulse 2s infinite;
-        }
-        
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .slide-in {
-            animation: slideIn 0.5s ease-out;
-        }
-        
-        .role-badge {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .role-badge::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: rotate(45deg);
-            animation: shine 3s infinite;
-        }
-        
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.3);
-        }
-        
-        .upload-preview {
-            transition: all 0.3s ease;
-        }
-        
-        .upload-preview:hover {
-            transform: scale(1.05);
-        }
-        
-        .particle {
-            position: absolute;
-            background: radial-gradient(circle, rgba(255,0,0,0.8) 0%, rgba(255,0,0,0) 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="min-h-screen bg-gradient-to-b from-gray-900 to-black body-font text-white overflow-x-hidden">
     <!-- Animated Background Particles -->
@@ -109,16 +20,17 @@
     <header class="relative z-10 bg-gradient-to-r from-black via-gray-900 to-black border-b-4 border-red-600">
         <div class="container mx-auto px-4 py-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="text-center md:text-left mb-6 md:mb-0">
-                    <h1 class="gaming-font text-4xl md:text-5xl lg:text-6xl font-bold glow-text">
-                        RPK - RISPEK
-                    </h1>
-                    <p class="text-xl md:text-2xl text-red-400 mt-2 pulse-effect">
-                        MOBILE LEGENDS ELITE SQUAD
-                    </p>
+                <div class="flex items-center gap-4 text-left mb-6">
+                    <img src="pic/logo03.png" alt="RPK - Rispek Logo" class="w-20 h-auto glow-logo">
+                    <div>
+                        <h1 class="gaming-font text-4xl md:text-5xl lg:text-6xl font-bold glow-text">
+                            RPK - RISPEK
+                        </h1>
+                        <p class="text-xl md:text-2xl text-red-400 mt-2 pulse-effect">
+                            MOBILE LEGENDS ELITE SQUAD
+                        </p>
+                    </div>
                 </div>
-                
-                <!-- Animated Gaming Stats -->
                 <div class="bg-black/50 backdrop-blur-sm border-2 border-red-600 rounded-lg p-4 float-animation">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="text-center">
@@ -170,23 +82,18 @@
                 </p>
                 
                 <!-- Photo Upload Section -->
-                <div class="bg-gradient-to-r from-black/50 to-gray-900/50 border-2 border-red-700 rounded-xl p-6 mb-12 slide-in">
+                <div class="bg-gradient-to-r from-black/50 to-gray-900/50 border-2 border-red-700 rounded-xl p-6 mb-12 slide-in float-animation">
                     <h3 class="gaming-font text-2xl text-red-400 mb-4">
-                        <i class="fas fa-camera mr-2"></i> SQUAD PHOTO UPLOAD
+                        <i class="fas fa-camera mr-2"></i> SQUAD PHOTO
                     </h3>
                     <p class="text-gray-300 mb-4">Each squad member can upload their latest gaming photos here:</p>
                     
-                    <div class="flex flex-col md:flex-row items-center justify-center gap-4">
-                        <div class="relative">
-                            <input type="file" id="photo-upload" accept="image/*" class="hidden">
-                            <label for="photo-upload" class="cursor-pointer bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 gaming-font px-6 py-3 rounded-lg flex items-center gap-2 transition-all duration-300">
-                                <i class="fas fa-upload"></i>
-                                UPLOAD PHOTO
-                            </label>
-                        </div>
-                        <div class="text-sm text-gray-400">
-                            Max 5MB • JPG, PNG, GIF
-                        </div>
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-4 glow-logo">
+                        <label for="photo-upload" class="cursor-pointer block w-full h-full rounded-lg overflow-hidden relative">
+                            <img src="pic/background03.jpg" class="w-full h-full object-cover float-animation">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center float-animation">
+                            </div>
+                        </label>
                     </div>
                     
                     <!-- Upload Preview -->
