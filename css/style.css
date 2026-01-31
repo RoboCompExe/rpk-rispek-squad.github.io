@@ -70,7 +70,7 @@
 
 .card-hover:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(255, 0, 0, 0.3);
+    box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
 }
 
 .upload-preview {
