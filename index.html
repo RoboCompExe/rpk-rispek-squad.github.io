@@ -105,11 +105,10 @@
         </section>
 
         <!-- Squad Members Grid -->
-        <section class="container mx-auto px-4 py-8">
+        <section class="container mx-auto px-20 py-12">
             <h2 class="gaming-font text-3xl md:text-4xl font-bold text-center mb-12 text-red-500">
                 MEET THE SQUAD
             </h2>
-            
             <div id="squad-members" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                 <!-- Squad members will be dynamically generated here -->
             </div>
@@ -187,30 +186,30 @@
         const squadMembers = [
             {
                 "id": 1,
-                "name": "RazorX",
-                "gameName": "RPK_RazorX",
-                "roles": ["Roamer", "Support"],
-                "instagram": "@razorx_gaming",
-                "description": "Strategic roamer with excellent map awareness. Specializes in tank and support heroes.",
-                "photo": "https://picsum.photos/300/300?random=101"
+                "name": "Muhammad Ferdiansyah",
+                "gameName": "Ferr.Comp",
+                "roles": ["Gold Laner", "Midlaner"],
+                "instagram": "@ali.ansyah1604",
+                "description": "",
+                "photo": "pic/ferr.png"
             },
             {
                 "id": 2,
-                "name": "PhantomBlade",
-                "gameName": "RPK_Phantom",
-                "roles": ["Jungler", "Assassin"],
-                "instagram": "@phantom_blade_ml",
-                "description": "Aggressive jungler with quick farming and ganking skills. Master of assassin heroes.",
-                "photo": "https://picsum.photos/300/300?random=102"
+                "name": "Muhammad Haikal Ikhsanta",
+                "gameName": "G r i z z .",
+                "roles": ["Exp Laner", "Roamer", "Midlaner"],
+                "instagram": "@hykallsntaa",
+                "description": "",
+                "photo": "pic/haikal.png"
             },
             {
                 "id": 3,
-                "name": "GoldenArrow",
-                "gameName": "RPK_GoldArrow",
-                "roles": ["Gold Laner", "Marksman"],
-                "instagram": "@golden_arrow_shots",
-                "description": "Precise gold laner with exceptional farming and positioning. Deadly with marksman heroes.",
-                "photo": "https://picsum.photos/300/300?random=103"
+                "name": "Muhammad Aldino",
+                "gameName": "ALLL",
+                "roles": ["Gold Laner", "Junger", "Midlaner", "Roamer", "Support", "Epx Laner"],
+                "instagram": "@maldino02",
+                "description": "",
+                "photo": "pic/aldi.png"
             },
             {
                 "id": 4,
@@ -297,7 +296,7 @@
             return `
                 <div class="card-hover bg-gradient-to-b from-gray-800 to-black border-2 border-red-700 rounded-xl overflow-hidden slide-in">
                     <!-- Member Photo -->
-                    <div class="relative h-48 overflow-hidden">
+                    <div class="relative h-80 overflow-hidden">
                         <img 
                             src="${member.photo}" 
                             alt="${member.name} - ${member.gameName}" 
@@ -339,13 +338,6 @@
                                 <span class="text-sm text-gray-300">${member.gameName}</span>
                             </div>
                         </div>
-                        
-                        <!-- Photo Upload Button -->
-                        <button onclick="openUploadModal(${member.id})" 
-                                class="w-full mt-4 bg-gradient-to-r from-red-800 to-red-600 hover:from-red-700 hover:to-red-500 gaming-font text-sm px-4 py-2 rounded-lg transition-all duration-300 flex items-center justify-center gap-2">
-                            <i class="fas fa-camera"></i>
-                            UPLOAD PHOTO
-                        </button>
                     </div>
                 </div>
             `;
@@ -385,97 +377,6 @@
                 
                 container.appendChild(particle);
             }
-        }
-
-        // Photo upload functionality
-        let uploadedPhotos = [];
-
-        function handlePhotoUpload(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            
-            // Check file size (5MB max)
-            if (file.size > 5 * 1024 * 1024) {
-                alert('File size must be less than 5MB');
-                return;
-            }
-            
-            // Check file type
-            if (!file.type.match('image.*')) {
-                alert('Please upload an image file');
-                return;
-            }
-            
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const photoData = {
-                    id: Date.now(),
-                    url: e.target.result,
-                    name: file.name,
-                    date: new Date().toLocaleDateString()
-                };
-                
-                uploadedPhotos.unshift(photoData); // Add to beginning
-                updateUploadPreview();
-                
-                // Show success message
-                showNotification('Photo uploaded successfully!');
-            };
-            
-            reader.readAsDataURL(file);
-            
-            // Reset file input
-            event.target.value = '';
-        }
-
-        function updateUploadPreview() {
-            const previewContainer = document.getElementById('upload-preview');
-            
-            if (uploadedPhotos.length === 0) {
-                previewContainer.classList.add('hidden');
-                return;
-            }
-            
-            previewContainer.classList.remove('hidden');
-            previewContainer.innerHTML = uploadedPhotos.slice(0, 4).map(photo => `
-                <div class="upload-preview relative overflow-hidden rounded-lg border-2 border-red-600">
-                    <img src="${photo.url}" alt="${photo.name}" class="w-full h-32 object-cover">
-                    <div class="absolute bottom-0 left-0 right-0 bg-black/70 p-2">
-                        <p class="text-xs truncate">${photo.name}</p>
-                        <p class="text-xs text-gray-400">${photo.date}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function openUploadModal(memberId) {
-            const member = squadMembers.find(m => m.id === memberId);
-            if (!member) return;
-            
-            // Trigger file input click
-            const fileInput = document.getElementById('photo-upload');
-            fileInput.setAttribute('data-member-id', memberId);
-            fileInput.click();
-            
-            // Show notification
-            showNotification(`Uploading photo for ${member.name}...`);
-        }
-
-        function showNotification(message) {
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.className = 'fixed top-4 right-4 bg-gradient-to-r from-red-700 to-red-600 gaming-font px-6 py-3 rounded-lg shadow-lg z-50 slide-in';
-            notification.textContent = message;
-            
-            document.body.appendChild(notification);
-            
-            // Remove after 3 seconds
-            setTimeout(() => {
-                notification.classList.add('opacity-0', 'transition-opacity', 'duration-300');
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
         }
 
         // Initialize everything when DOM is loaded
