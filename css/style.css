@@ -197,8 +197,8 @@
 
 /* Styling untuk logo */
 .logo-img {
-    width: 50px; /* Sesuaikan ukuran */
-    height: 50px;
+    width: 300px; /* Sesuaikan ukuran */
+    height: 300px;
     border-radius: 50%; /* Opsional: membuat logo bulat */
     object-fit: cover; /* Menjaga aspek rasio gambar */
 }
@@ -239,45 +239,196 @@
 /* Responsif untuk mobile (opsional) */
 @media (max-width: 768px) {
     .logo-img {
-        width: 80px; /* Lebih kecil di mobile */
-        height: 80px;
+        width: 300px; /* Lebih kecil di mobile */
+        height: 300px;
     }
 }
 
 
 /* Animasi Tambahan*/
-
-/* Animasi Getar (Rumble) */
-@keyframes rumble {
-    0% { transform: translate(0,0) rotate(0deg); }
-    10% { transform: translate(-2px, -2px) rotate(-1deg); }
-    30% { transform: translate(3px, 2px) rotate(1deg); }
-    50% { transform: translate(-3px, -1px) rotate(-1deg); }
-    70% { transform: translate(2px, 1px) rotate(1deg); }
-    90% { transform: translate(-1px, 2px) rotate(0deg); }
-    100% { transform: translate(0,0) rotate(0deg); }
+/* ===== WRAPPER AMAN ===== */
+.logo-container {
+    position: relative;
 }
 
-/* Animasi Roket Meluncur */
-@keyframes rocketLaunch {
-    0% { transform: translateY(0); }
-    10% { transform: translateY(10px); } /* Sedikit ancang-ancang ke bawah */
-    100% { transform: translateY(-200vh); } /* Terbang jauh ke atas */
+.logo-rocket {
+    position: relative;
+    display: inline-block;
 }
 
-/* Efek Asap Tebal */
+/* LOGO TETAP ASLI */
+.logo-img {
+    display: block;
+}
+
+/* ===== GETAR (WRAPPER) ===== */
+.rocket-shake {
+    animation: rocketShake 0.15s infinite;
+}
+
+@keyframes rocketShake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-2px, 2px); }
+    50% { transform: translate(2px, -2px); }
+    75% { transform: translate(-2px, -2px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* ===== TERBANG ROKET ===== */
+.rocket-fly {
+    animation: rocketFly 3s ease-in forwards;
+}
+
+@keyframes rocketFly {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-120vh);
+    }
+}
+
+.cover-hide {
+    animation: coverFadeOut 2s ease forwards;
+}
+
+@keyframes coverFadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* ===== ASAP ROKET SUPER TEBAL ===== */
+.cloud-smoke {
+    position: absolute;
+    bottom: -160px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 350px;
+    pointer-events: none;
+    opacity: 0;
+    filter: blur(3px);
+}
+
+.cloud-smoke span {
+    position: absolute;
+    bottom: 0;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(240,240,240,1) 0%,
+        rgba(210,210,210,0.95) 35%,
+        rgba(170,170,170,0.8) 60%,
+        rgba(120,120,120,0.4) 80%,
+        rgba(120,120,120,0) 100%
+    );
+    border-radius: 50%;
+    animation: smokeBlast 2.6s ease-out forwards;
+}
+
+/* Variasi awan */
+.cloud-smoke span:nth-child(1) {
+    width: 220px;
+    height: 150px;
+    left: 0;
+}
+
+.cloud-smoke span:nth-child(2) {
+    width: 280px;
+    height: 180px;
+    left: 120px;
+}
+
+.cloud-smoke span:nth-child(3) {
+    width: 240px;
+    height: 160px;
+    left: 260px;
+}
+
+.cloud-smoke span:nth-child(4) {
+    width: 300px;
+    height: 200px;
+    left: 90px;
+    bottom: 40px;
+}
+
+.cloud-smoke span:nth-child(5) {
+    width: 200px;
+    height: 140px;
+    left: 360px;
+    bottom: 30px;
+}
+
+/* ANIMASI SEMBURAN */
+@keyframes smokeBlast {
+    0% {
+        transform: translateY(0) scale(0.4);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(80px) scale(1.6);
+        opacity: 0;
+    }
+}
+
+/* AKTIF */
+.cloud-active {
+    opacity: 1;
+}
+
+/* ASAP ROKET SIMPLE & TEBAL */
 .rocket-smoke {
-    transition: all 4s;
-    box-shadow: 
-        0 20px 30px 10px rgba(255, 255, 255, 0.6),
-        0 40px 60px 20px rgba(200, 200, 200, 0.4),
-        0 60px 90px 40px rgba(150, 150, 150, 0.2) !important;
-}
-
-.animasi-getar {
-    animation: rumble 4s infinite;
-}
-
-.animasi-meluncur {
-    animation: rocketLaunch 4s ease-in forwards;
-}
+    position: absolute;
+    bottom: -140px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 220px;
+    pointer-events: none;
+    opacity: 0;
+  }
+  
+  .rocket-smoke span {
+    position: absolute;
+    bottom: 0;
+    width: 180px;
+    height: 120px;
+    background: radial-gradient(circle,
+      rgba(255,255,255,0.95) 0%,
+      rgba(230,230,230,0.9) 40%,
+      rgba(200,200,200,0.6) 70%,
+      rgba(200,200,200,0) 100%);
+    border-radius: 50%;
+    animation: smokeUp 2.2s ease-out forwards;
+  }
+  
+  /* posisi awan */
+  .rocket-smoke span:nth-child(1) { left: 0; }
+  .rocket-smoke span:nth-child(2) { left: 60px; width: 220px; height: 150px; }
+  .rocket-smoke span:nth-child(3) { left: 130px; }
+  
+  /* animasi asap */
+  @keyframes smokeUp {
+    0% {
+      transform: scale(0.4) translateY(0);
+      opacity: 0;
+    }
+    20% { opacity: 1; }
+    100% {
+      transform: scale(1.4) translateY(80px);
+      opacity: 0;
+    }
+  }
+  
+  /* aktif */
+  .smoke-on {
+    opacity: 1;
+  }
+  
