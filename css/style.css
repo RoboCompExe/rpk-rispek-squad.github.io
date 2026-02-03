@@ -162,3 +162,76 @@
 .hidden {
     display: none;
 }
+
+/* Styling untuk logo */
+.logo-img {
+    width: 150px; /* Sesuaikan ukuran */
+    height: 150px;
+    margin-bottom: 20px; /* Jarak antara logo dan teks RPK */
+    border-radius: 50%; /* Opsional: membuat logo bulat */
+    object-fit: cover; /* Menjaga aspek rasio gambar */
+}
+
+/* Animasi float yang sudah ada (pastikan sudah ada di CSS Anda) */
+.float-animation {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Container untuk logo agar bisa diposisikan dengan flexbox */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px; /* Jarak antara logo dan teks RPK */
+}
+
+/* Styling untuk logo */
+.logo-img {
+    width: 150px; /* Sesuaikan ukuran */
+    height: 150px;
+    border-radius: 50%; /* Opsional: membuat logo bulat */
+    object-fit: cover; /* Menjaga aspek rasio gambar */
+}
+
+/* Animasi float */
+.float-animation {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Jika .cover-content belum flex container, tambahkan ini */
+.cover-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Styling untuk glow effect pada logo */
+.glow-logo {
+    filter: drop-shadow(0 0 10px rgba(0, 247, 255, 0.7));
+    transition: filter 0.3s ease;
+}
+
+.glow-logo:hover {
+    filter: drop-shadow(0 0 20px rgba(0, 247, 255, 1));
+}
