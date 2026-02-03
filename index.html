@@ -641,14 +641,13 @@
 
         document.getElementById('enterBtn').addEventListener('click', function(e) {
     e.preventDefault(); // Mencegah scroll tidak sengaja di mobile
-            document.getElementById("bgm").play();
     
     const logo = document.querySelector('.logo-img');
     const btn = this;
 
     // Tambahkan feedback visual pada tombol (opsional)
     btn.innerHTML = "LAUNCHING...";
-    btn.style.opacity = "0.5";
+    btn.style.opacity = "2";
     btn.disabled = true;
 
     // 1. Fase Getar (4 Detik)
@@ -665,19 +664,21 @@
         // 3. Efek Fade Out Cover (Setelah logo hilang dari layar)
         setTimeout(() => {
             const cover = document.getElementById('cover');
-            cover.style.transition = "opacity 0.8s ease";
+            cover.style.transition = "opacity 2s ease";
             cover.style.opacity = '0';
             
             setTimeout(() => {
                 cover.style.display = 'none';
             }, 800);
         }, 1000);
-        
+        document.getElementById("bgm").play();
     }, 4000); 
 });
+        
     </script>
 </body>
 </html>
+
 
 
 
