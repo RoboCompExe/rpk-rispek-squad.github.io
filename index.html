@@ -636,45 +636,51 @@
             });
         });
 // Add touch support for mobile
-        document.addEventListener('touchstart', function() {}, { passive: true });
+document.addEventListener('touchstart', function() {}, { passive: true });
 
-        document.getElementById('enterBtn').addEventListener('click', function(e) {
-    e.preventDefault(); // Mencegah scroll tidak sengaja di mobile
+document.getElementById('enterBtn').addEventListener('click', function(e) {
+    e.preventDefault(); 
     
+    // Play BGM segera setelah klik
+    const audio = document.getElementById("bgm");
+    if (audio) { audio.play(); }
+
     const logo = document.querySelector('.logo-img');
     const btn = this;
 
-    // Tambahkan feedback visual pada tombol (opsional)
+    // Feedback visual tombol
     btn.innerHTML = "LAUNCHING...";
-    btn.style.opacity = "2";
+    btn.style.opacity = "0.5"; // Opacity tombol turun saat disabled
     btn.disabled = true;
 
     // 1. Fase Getar (4 Detik)
     logo.classList.add('animasi-getar');
 
     setTimeout(() => {
-        // 2. Fase Meluncur
+        // 2. Fase Meluncur & Munculkan Smoke
         logo.classList.remove('animasi-getar');
         logo.classList.add('animasi-meluncur', 'rocket-smoke');
         
-        // Sembunyikan tombol saat terbang
+        // Sembunyikan tombol agar tidak menghalangi visual smoke
         btn.style.display = 'none';
 
-        // 3. Efek Fade Out Cover (Setelah logo hilang dari layar)
+        // 3. Efek Fade Out Cover
         setTimeout(() => {
             const cover = document.getElementById('cover');
             cover.style.transition = "opacity 2s ease";
-            cover.style.opacity = '1';
+            cover.style.opacity = '0'; // DIPERBAIKI: Harus 0 agar cover hilang dan smoke terlihat
             
             setTimeout(() => {
                 cover.style.display = 'none';
-            }, 800);
+            }, 2000); // Sesuaikan dengan durasi transition opacity
         }, 1000);
     }, 4000); 
 });
+
     </script>
 </body>
 </html>
+
 
 
 
