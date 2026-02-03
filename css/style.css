@@ -192,7 +192,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-bottom: 20px; /* Jarak antara logo dan teks RPK */
+    margin-bottom: 15px; /* Jarak antara logo dan teks RPK */
 }
 
 /* Styling untuk logo */
@@ -234,4 +234,12 @@
 
 .glow-logo:hover {
     filter: drop-shadow(0 0 20px rgba(0, 247, 255, 1));
+}
+
+/* Responsif untuk mobile (opsional) */
+@media (max-width: 768px) {
+    .logo-img {
+        width: 80px; /* Lebih kecil di mobile */
+        height: 80px;
+    }
 }
