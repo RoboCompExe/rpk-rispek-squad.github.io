@@ -278,3 +278,49 @@
 .animasi-meluncur {
     animation: rocketLaunch 1.5s ease-in forwards;
 }
+
+/* Animasi Getar - Dioptimalkan untuk Mobile */
+@keyframes rumble {
+    0% { transform: translate3d(0,0,0) rotate(0deg); }
+    25% { transform: translate3d(-2px, -1px, 0) rotate(-1deg); }
+    50% { transform: translate3d(2px, 1px, 0) rotate(1deg); }
+    75% { transform: translate3d(-1px, 2px, 0) rotate(-0.5deg); }
+    100% { transform: translate3d(0,0,0) rotate(0deg); }
+}
+
+/* Animasi Meluncur Ke Atas */
+@keyframes rocketLaunch {
+    0% { transform: translate3d(0, 0, 0); }
+    15% { transform: translate3d(0, 15px, 0); } /* Reaksi tekanan bawah */
+    100% { transform: translate3d(0, -150vh, 0); }
+}
+
+/* Efek Asap Tebal (Responsif) */
+.rocket-smoke {
+    will-change: transform, box-shadow;
+    filter: blur(2px);
+    /* Shadow lebih rapat untuk mobile agar tidak pecah */
+    box-shadow: 
+        0 15px 20px 5px rgba(255, 255, 255, 0.8),
+        0 30px 40px 15px rgba(200, 200, 200, 0.6),
+        0 50px 70px 30px rgba(150, 150, 150, 0.3) !important;
+}
+
+/* Class pemicu */
+.animasi-getar {
+    animation: rumble 0.1s infinite;
+}
+
+.animasi-meluncur {
+    animation: rocketLaunch 1.2s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+/* Perbaikan untuk Logo agar tidak pecah saat animasi */
+.logo-img {
+    transition: box-shadow 0.5s ease;
+    max-width: 150px; /* Ukuran standar mobile */
+}
+
+@media (min-width: 768px) {
+    .logo-img { max-width: 250px; } /* Ukuran desktop */
+}
