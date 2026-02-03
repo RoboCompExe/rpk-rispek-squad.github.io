@@ -267,7 +267,7 @@
 
 /* Efek Asap Tebal */
 .rocket-smoke {
-    transition: all 0.3s;
+    transition: all 4s;
     box-shadow: 
         0 20px 30px 10px rgba(255, 255, 255, 0.6),
         0 40px 60px 20px rgba(200, 200, 200, 0.4),
@@ -275,9 +275,10 @@
 }
 
 .animasi-getar {
-    animation: rumble 0.1s infinite;
+    animation: rumble 4s infinite;
 }
 
 .animasi-meluncur {
-    animation: rocketLaunch 1.5s ease-in forwards;
+    animation: rocketLaunch 4s ease-in forwards;
 }
+
