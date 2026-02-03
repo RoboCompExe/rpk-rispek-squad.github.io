@@ -245,6 +245,7 @@
 }
 
 /* animation */
+
 /* Animasi Getar (Rumble) */
 @keyframes rumble {
     0% { transform: translate(0,0) rotate(0deg); }
@@ -372,5 +373,44 @@
     transform: translateY(-150vh) scale(1.2);
 }
 
+/* Animasi Getar yang lebih terasa */
+.animasi-getar {
+    animation: shake 0.1s infinite;
+}
 
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    50% { transform: translate(-1px, -2px) rotate(-1deg); }
+    100% { transform: translate(1px, 1px) rotate(0deg); }
+}
 
+/* Partikel Asap */
+.particle-smoke {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.8); /* Warna putih asap */
+    border-radius: 50%;
+    filter: blur(10px);
+    z-index: 999;
+    pointer-events: none;
+    animation: smokeFly 2s forwards;
+    transform: translateX(-50%);
+}
+
+@keyframes smokeFly {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, 100px) scale(4); /* Asap membesar sambil turun */
+    }
+}
+
+/* Animasi Meluncur */
+.animasi-meluncur {
+    transition: transform 1.5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    transform: translateY(-150vh) scale(1.2);
+}
