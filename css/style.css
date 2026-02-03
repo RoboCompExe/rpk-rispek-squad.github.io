@@ -165,8 +165,8 @@
 
 /* Styling untuk logo */
 .logo-img {
-    width: 150px; /* Sesuaikan ukuran */
-    height: 150px;
+    width: 50px; /* Sesuaikan ukuran */
+    height: 50px;
     margin-bottom: 20px; /* Jarak antara logo dan teks RPK */
     border-radius: 50%; /* Opsional: membuat logo bulat */
     object-fit: cover; /* Menjaga aspek rasio gambar */
@@ -197,8 +197,8 @@
 
 /* Styling untuk logo */
 .logo-img {
-    width: 150px; /* Sesuaikan ukuran */
-    height: 150px;
+    width: 50px; /* Sesuaikan ukuran */
+    height: 50px;
     border-radius: 50%; /* Opsional: membuat logo bulat */
     object-fit: cover; /* Menjaga aspek rasio gambar */
 }
