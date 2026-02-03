@@ -325,3 +325,8 @@
     .logo-img { max-width: 250px; } /* Ukuran desktop */
 }
 
+#cover {
+    pointer-events: none; /* Agar klik tidak terhalang saat proses menghilang */
+}
+
+
