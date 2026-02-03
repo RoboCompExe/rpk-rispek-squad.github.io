@@ -165,9 +165,9 @@
 
 /* Styling untuk logo */
 .logo-img {
-    width: 50px; /* Sesuaikan ukuran */
-    height: 50px;
-    margin-bottom: 20px; /* Jarak antara logo dan teks RPK */
+    width: 200px; /* Sesuaikan ukuran */
+    height: 200px;
+    margin-bottom: 50px; /* Jarak antara logo dan teks RPK */
     border-radius: 50%; /* Opsional: membuat logo bulat */
     object-fit: cover; /* Menjaga aspek rasio gambar */
 }
@@ -197,8 +197,8 @@
 
 /* Styling untuk logo */
 .logo-img {
-    width: 50px; /* Sesuaikan ukuran */
-    height: 50px;
+    width: 200px; /* Sesuaikan ukuran */
+    height: 200px;
     border-radius: 50%; /* Opsional: membuat logo bulat */
     object-fit: cover; /* Menjaga aspek rasio gambar */
 }
@@ -239,7 +239,8 @@
 /* Responsif untuk mobile (opsional) */
 @media (max-width: 768px) {
     .logo-img {
-        width: 80px; /* Lebih kecil di mobile */
-        height: 80px;
+        width: 200px; /* Lebih kecil di mobile */
+        height: 200px;
     }
 }
+
