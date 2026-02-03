@@ -11,16 +11,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <audio controls preload="auto">
+    <audio id="bgm">
         <source src="css/gods.mp3" type="audio/mpeg">
-        <source src="css/gods.ogg" type="audio/ogg">
-        <source src="css/gods.wav" type="audio/wav">
-    </audio>
-    <audio autoplay muted loop>
-    <source src="css/gods.mp3" type="audio/mpeg">
-</audio>
+    </audio>      
 </head>
 <body class="min-h-screen bg-gradient-to-b from-gray-900 to-black body-font text-white overflow-x-hidden">
+    <!-- COVER PAGE -->
+<div id="cover" class="cover">
+    <div class="cover-content">
+        <h1 class="title">RPK - RISPEK</h1>
+        <button id="enterBtn" class="enter-btn">CLICK US</button>
+    </div>
+</div>
+
+<!-- ISI WEBSITE -->
+<div id="mainContent" class="hidden"></div>
     <!-- Animated Background Particles -->
     <div id="particles-container" class="fixed inset-0 pointer-events-none z-0"></div>
     
@@ -624,8 +629,17 @@
 
         // Add touch support for mobile
         document.addEventListener('touchstart', function() {}, { passive: true });
+
+        document.getElementById("enterBtn").addEventListener("click", () => {
+    document.getElementById("cover").style.display = "none";
+    document.getElementById("mainContent").classList.remove("hidden");
+});
+
+document.getElementById("enterBtn").addEventListener("click", () => {
+    document.getElementById("cover").style.display = "none";
+    document.getElementById("mainContent").classList.remove("hidden");
+    document.getElementById("bgm").play();
+});
     </script>
 </body>
 </html>
-
-
