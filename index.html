@@ -10,10 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <audio id="bgm">
-        <source src="css/gods.mp3" type="audio/mpeg">
-    </audio>      
+    <link rel="stylesheet" href="css/style.css">   
 </head>
 <body class="min-h-screen bg-gradient-to-b from-gray-900 to-black body-font text-white overflow-x-hidden">
     
@@ -22,14 +19,30 @@
         <div class="cover-content">
             <!-- Logo dengan animasi float dan glow, ditempatkan di tengah -->
             <div class="logo-container">
-                <img src="pic/logo03.png" alt="Logo RPK" class="glow-logo float-animation logo-img">
-            </div>
-            
+                <div class="logo-rocket">                     
+                    <img src="pic/logo03.png" alt="Logo RPK" class="glow-logo logo-img">  
+                    <!-- ASAP AWAN ROKET -->
+                    <div class="cloud-smoke">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="rocket-smoke">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div> 
+                </div>                
+            </div>            
             <h1 class="gaming-font text-4xl md:text-5xl lg:text-6xl font-bold glow-text">RPK</h1>
             <br>
             <h1 class="gaming-font text-4xl md:text-5xl lg:text-6xl font-bold glow-text">RISPEK SQUAD</h1>
             <br>
             <button id="enterBtn" class="enter-btn float-animation">CLICK US</button>
+            <audio id="bgMusic" src="css/gods.mp3"></audio>
         </div>
     </div>
 
@@ -618,61 +631,38 @@
             const photoUploadInput = document.getElementById('photo-upload');
             photoUploadInput.addEventListener('change', handlePhotoUpload);
             
-            // Add click event to all upload buttons
-            document.querySelectorAll('[onclick^="openUploadModal"]').forEach(button => {
-                button.addEventListener('click', function(e) {
-                    if (e.target.tagName === 'BUTTON') {
-                        const memberId = parseInt(e.target.getAttribute('onclick').match(/\d+/)[0]);
-                        openUploadModal(memberId);
-                    }
-                });
             });
-            
-            // Add keyboard navigation
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    // Close any open modals (future enhancement)
-                }
-            });
-        });
 
-        // Add touch support for mobile
-        document.addEventListener('touchstart', function() {}, { passive: true });
+const enterBtn = document.getElementById("enterBtn");
+const rocket = document.querySelector(".logo-rocket");
+const music = document.getElementById("bgMusic");
+const cover = document.getElementById("cover");
+const cloud = document.querySelector(".cloud-smoke");
 
-        document.getElementById("enterBtn").addEventListener("click", () => {
-    document.getElementById("cover").style.display = "none";
-    document.getElementById("mainContent").classList.remove("hidden");
-});
+enterBtn.addEventListener("click", () => {
+    document.querySelector(".rocket-smoke").classList.add("smoke-on");
 
-document.getElementById("enterBtn").addEventListener("click", () => {
-    document.getElementById("cover").style.display = "none";
-    document.getElementById("mainContent").classList.remove("hidden");
-    document.getElementById("bgm").play();
-});
+    enterBtn.disabled = true;
 
-        document.getElementById('enterBtn').addEventListener('click', function() {
-    const logo = document.querySelector('.logo-img');
-    const btn = this;
+    // 🎵 Musik
+    music.currentTime = 0;
+    music.play();
 
-    // 1. Sembunyikan tombol agar fokus ke logo
-    btn.style.display = 'none';
+    // 💨 Asap + getar
+    cloud.classList.add("cloud-active");
+    rocket.classList.add("rocket-shake");
 
-    // 2. Mulai bergetar
-    logo.classList.add('animasi-getar');
-
-    // 3. Setelah 4 detik, luncurkan!
+    // 🚀 Terbang
     setTimeout(() => {
-        logo.classList.remove('animasi-getar');
-        logo.classList.add('animasi-meluncur', 'rocket-smoke');
-        
-        // Opsional: Redirect atau hilangkan cover setelah terbang
-        setTimeout(() => {
-            document.getElementById('cover').style.opacity = '0';
-            // window.location.href = "home.html"; // Jika ingin pindah halaman
-        }, 1000);
-    }, 4000); 
+        rocket.classList.remove("rocket-shake");
+        rocket.classList.add("rocket-fly");
+    }, 2000);
+
+    // 🌌 Hilangkan cover saat roket naik
+    setTimeout(() => {
+        cover.classList.add("cover-hide");
+    }, 2500);
 });
-        
     </script>
 </body>
 </html>
