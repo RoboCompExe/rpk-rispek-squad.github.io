@@ -637,17 +637,26 @@
         });
 
         // Add touch support for mobile
-        document.addEventListener('touchstart', function() {}, { passive: true });
+document.addEventListener('touchstart', function() {}, { passive: true });
 
-        document.getElementById('enterBtn').addEventListener('click', function(e) {
+document.getElementById('enterBtn').addEventListener('click', function(e) {
     e.preventDefault(); // Mencegah scroll tidak sengaja di mobile
     
+    // --- TAMBAHAN: Putar musik segera setelah klik ---
+    const bgm = document.getElementById("bgm");
+    if (bgm) {
+        bgm.play().catch(error => {
+            console.log("Autoplay dicegah oleh browser, tapi karena ini interaksi user, harusnya aman.");
+        });
+    }
+    // -----------------------------------------------
+
     const logo = document.querySelector('.logo-img');
     const btn = this;
 
-    // Tambahkan feedback visual pada tombol (opsional)
+    // Tambahkan feedback visual pada tombol
     btn.innerHTML = "LAUNCHING...";
-    btn.style.opacity = "2";
+    btn.style.opacity = "0.7"; // Koreksi: opacity biasanya max 1, saya set ke 0.7 agar terlihat 'disabled'
     btn.disabled = true;
 
     // 1. Fase Getar (4 Detik)
@@ -671,13 +680,13 @@
                 cover.style.display = 'none';
             }, 800);
         }, 1000);
-        document.getElementById("bgm").play();
     }, 4000); 
 });
-        
+
     </script>
 </body>
 </html>
+
 
 
 
