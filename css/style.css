@@ -158,6 +158,38 @@
     box-shadow: 0 0 20px #ef4444;
 }
 
+/* Pastikan tombol selalu bisa diklik di awal */
+#enterBtn {
+    position: relative;
+    z-index: 9999; 
+    cursor: pointer;
+}
+
+/* Partikel Asap Tebal */
+.smoke-particle {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, rgba(200,200,200,0.8) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    filter: blur(8px);
+    z-index: 999;
+    pointer-events: none; /* AGAR TIDAK MENGHALANGI KLIK */
+    animation: smokeMove 2s forwards;
+}
+
+@keyframes smokeMove {
+    0% { transform: translate(-50%, 0) scale(0.5); opacity: 0.8; }
+    100% { transform: translate(-50%, 150px) scale(3); opacity: 0; }
+}
+
+/* Animasi Meluncur */
+.animasi-meluncur {
+    transition: transform 2s ease-in;
+    transform: translateY(-150vh) scale(1.1);
+}
+
+
 /* Sembunyikan isi web */
 .hidden {
     display: none;
@@ -414,3 +446,4 @@
     transition: transform 1.5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
     transform: translateY(-150vh) scale(1.2);
 }
+
