@@ -150,45 +150,13 @@
     background: transparent;
     border: 2px solid #ef4444;
     cursor: pointer;
-    transition: 4s ease;
+    transition: 0.3s ease;
 }
 
 .enter-btn:hover {
     background: #ef4444;
     box-shadow: 0 0 20px #ef4444;
 }
-
-/* Pastikan tombol selalu bisa diklik di awal */
-#enterBtn {
-    position: relative;
-    z-index: 9999; 
-    cursor: pointer;
-}
-
-/* Partikel Asap Tebal */
-.smoke-particle {
-    position: fixed;
-    width: 50px;
-    height: 50px;
-    background: radial-gradient(circle, rgba(200,200,200,0.8) 0%, rgba(255,255,255,0) 70%);
-    border-radius: 50%;
-    filter: blur(8px);
-    z-index: 999;
-    pointer-events: none; /* AGAR TIDAK MENGHALANGI KLIK */
-    animation: smokeMove 2s forwards;
-}
-
-@keyframes smokeMove {
-    0% { transform: translate(-50%, 0) scale(0.5); opacity: 0.8; }
-    100% { transform: translate(-50%, 150px) scale(3); opacity: 0; }
-}
-
-/* Animasi Meluncur */
-.animasi-meluncur {
-    transition: transform 2s ease-in;
-    transform: translateY(-150vh) scale(1.1);
-}
-
 
 /* Sembunyikan isi web */
 .hidden {
@@ -197,16 +165,16 @@
 
 /* Styling untuk logo */
 .logo-img {
-    width: 200px; /* Sesuaikan ukuran */
-    height: 200px;
-    margin-bottom: 50px; /* Jarak antara logo dan teks RPK */
+    width: 50px; /* Sesuaikan ukuran */
+    height: 50px;
+    margin-bottom: 20px; /* Jarak antara logo dan teks RPK */
     border-radius: 50%; /* Opsional: membuat logo bulat */
     object-fit: cover; /* Menjaga aspek rasio gambar */
 }
 
 /* Animasi float yang sudah ada (pastikan sudah ada di CSS Anda) */
 .float-animation {
-    animation: float 4s ease-in-out infinite;
+    animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
@@ -229,15 +197,15 @@
 
 /* Styling untuk logo */
 .logo-img {
-    width: 200px; /* Sesuaikan ukuran */
-    height: 200px;
+    width: 50px; /* Sesuaikan ukuran */
+    height: 50px;
     border-radius: 50%; /* Opsional: membuat logo bulat */
     object-fit: cover; /* Menjaga aspek rasio gambar */
 }
 
 /* Animasi float */
 .float-animation {
-    animation: float 4s ease-in-out infinite;
+    animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
@@ -261,7 +229,7 @@
 /* Styling untuk glow effect pada logo */
 .glow-logo {
     filter: drop-shadow(0 0 10px rgba(0, 247, 255, 0.7));
-    transition: filter 4s ease;
+    transition: filter 0.3s ease;
 }
 
 .glow-logo:hover {
@@ -271,179 +239,7 @@
 /* Responsif untuk mobile (opsional) */
 @media (max-width: 768px) {
     .logo-img {
-        width: 200px; /* Lebih kecil di mobile */
-        height: 200px;
+        width: 80px; /* Lebih kecil di mobile */
+        height: 80px;
     }
 }
-
-/* animation */
-
-/* Animasi Getar (Rumble) */
-@keyframes rumble {
-    0% { transform: translate(0,0) rotate(0deg); }
-    10% { transform: translate(-2px, -2px) rotate(-1deg); }
-    30% { transform: translate(3px, 2px) rotate(1deg); }
-    50% { transform: translate(-3px, -1px) rotate(-1deg); }
-    70% { transform: translate(2px, 1px) rotate(1deg); }
-    90% { transform: translate(-1px, 2px) rotate(0deg); }
-    100% { transform: translate(0,0) rotate(0deg); }
-}
-
-/* Animasi Roket Meluncur */
-@keyframes rocketLaunch {
-    0% { transform: translateY(0); }
-    10% { transform: translateY(10px); } /* Sedikit ancang-ancang ke bawah */
-    100% { transform: translateY(-200vh); } /* Terbang jauh ke atas */
-}
-
-/* Efek Asap Tebal */
-.rocket-smoke {
-    transition: all 4s;
-    box-shadow: 
-        0 20px 30px 10px rgba(255, 255, 255, 0.6),
-        0 40px 60px 20px rgba(200, 200, 200, 0.4),
-        0 60px 90px 40px rgba(150, 150, 150, 0.2) !important;
-}
-
-.animasi-getar {
-    animation: rumble 2s infinite;
-}
-
-.animasi-meluncur {
-    animation: rocketLaunch 3s ease-in forwards;
-}
-
-/* Animasi Getar - Dioptimalkan untuk Mobile */
-@keyframes rumble {
-    0% { transform: translate3d(0,0,0) rotate(0deg); }
-    25% { transform: translate3d(-2px, -1px, 0) rotate(-1deg); }
-    50% { transform: translate3d(2px, 1px, 0) rotate(1deg); }
-    75% { transform: translate3d(-1px, 2px, 0) rotate(-0.5deg); }
-    100% { transform: translate3d(0,0,0) rotate(0deg); }
-}
-
-/* Animasi Meluncur Ke Atas */
-@keyframes rocketLaunch {
-    0% { transform: translate3d(0, 0, 0); }
-    15% { transform: translate3d(0, 15px, 0); } /* Reaksi tekanan bawah */
-    100% { transform: translate3d(0, -150vh, 0); }
-}
-
-/* Efek Asap Tebal (Responsif) */
-.rocket-smoke {
-    will-change: transform, box-shadow;
-    filter: blur(2px);
-    /* Shadow lebih rapat untuk mobile agar tidak pecah */
-    box-shadow: 
-        0 15px 20px 5px rgba(255, 255, 255, 0.8),
-        0 30px 40px 15px rgba(200, 200, 200, 0.6),
-        0 50px 70px 30px rgba(150, 150, 150, 0.3) !important;
-}
-
-/* Class pemicu */
-.animasi-getar {
-    animation: rumble 2s infinite;
-}
-
-.animasi-meluncur {
-    animation: rocketLaunch 2s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
-}
-
-/* Perbaikan untuk Logo agar tidak pecah saat animasi */
-.logo-img {
-    transition: box-shadow 4s ease;
-    max-width: 150px; /* Ukuran standar mobile */
-}
-
-@media (min-width: 768px) {
-    .logo-img { max-width: 250px; } /* Ukuran desktop */
-}
-
-#cover {
-    pointer-events: none; /* Agar klik tidak terhalang saat proses menghilang */
-}
-
-/* Animasi Getar yang lebih terasa */
-.animasi-getar {
-    animation: shake 0.1s infinite;
-}
-
-@keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    50% { transform: translate(-1px, -2px) rotate(-1deg); }
-    100% { transform: translate(1px, 1px) rotate(0deg); }
-}
-
-/* Partikel Asap */
-.particle-smoke {
-    position: fixed;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.8); /* Warna putih asap */
-    border-radius: 50%;
-    filter: blur(10px);
-    z-index: 999;
-    pointer-events: none;
-    animation: smokeFly 2s forwards;
-    transform: translateX(-50%);
-}
-
-@keyframes smokeFly {
-    0% {
-        opacity: 1;
-        transform: translate(-50%, 0) scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-50%, 100px) scale(4); /* Asap membesar sambil turun */
-    }
-}
-
-/* Animasi Meluncur */
-.animasi-meluncur {
-    transition: transform 1.5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-    transform: translateY(-150vh) scale(1.2);
-}
-
-/* Animasi Getar yang lebih terasa */
-.animasi-getar {
-    animation: shake 0.1s infinite;
-}
-
-@keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    50% { transform: translate(-1px, -2px) rotate(-1deg); }
-    100% { transform: translate(1px, 1px) rotate(0deg); }
-}
-
-/* Partikel Asap */
-.particle-smoke {
-    position: fixed;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.8); /* Warna putih asap */
-    border-radius: 50%;
-    filter: blur(10px);
-    z-index: 999;
-    pointer-events: none;
-    animation: smokeFly 2s forwards;
-    transform: translateX(-50%);
-}
-
-@keyframes smokeFly {
-    0% {
-        opacity: 1;
-        transform: translate(-50%, 0) scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-50%, 100px) scale(4); /* Asap membesar sambil turun */
-    }
-}
-
-/* Animasi Meluncur */
-.animasi-meluncur {
-    transition: transform 1.5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-    transform: translateY(-150vh) scale(1.2);
-}
-
