@@ -672,7 +672,44 @@ document.getElementById("enterBtn").addEventListener("click", () => {
         }, 1000);
     }, 4000); 
 });
+
+        document.getElementById('enterBtn').addEventListener('click', function(e) {
+    e.preventDefault(); // Mencegah scroll tidak sengaja di mobile
+    
+    const logo = document.querySelector('.logo-img');
+    const btn = this;
+
+    // Tambahkan feedback visual pada tombol (opsional)
+    btn.innerHTML = "LAUNCHING...";
+    btn.style.opacity = "0.5";
+    btn.disabled = true;
+
+    // 1. Fase Getar (4 Detik)
+    logo.classList.add('animasi-getar');
+
+    setTimeout(() => {
+        // 2. Fase Meluncur
+        logo.classList.remove('animasi-getar');
+        logo.classList.add('animasi-meluncur', 'rocket-smoke');
+        
+        // Sembunyikan tombol saat terbang
+        btn.style.display = 'none';
+
+        // 3. Efek Fade Out Cover (Setelah logo hilang dari layar)
+        setTimeout(() => {
+            const cover = document.getElementById('cover');
+            cover.style.transition = "opacity 0.8s ease";
+            cover.style.opacity = '0';
+            
+            setTimeout(() => {
+                cover.style.display = 'none';
+            }, 800);
+        }, 1000);
+        
+    }, 4000); 
+});
     </script>
 </body>
 </html>
+
 
