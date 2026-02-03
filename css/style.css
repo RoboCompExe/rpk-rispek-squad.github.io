@@ -243,3 +243,41 @@
         height: 80px;
     }
 }
+
+
+/* Animasi Tambahan*/
+
+/* Animasi Getar (Rumble) */
+@keyframes rumble {
+    0% { transform: translate(0,0) rotate(0deg); }
+    10% { transform: translate(-2px, -2px) rotate(-1deg); }
+    30% { transform: translate(3px, 2px) rotate(1deg); }
+    50% { transform: translate(-3px, -1px) rotate(-1deg); }
+    70% { transform: translate(2px, 1px) rotate(1deg); }
+    90% { transform: translate(-1px, 2px) rotate(0deg); }
+    100% { transform: translate(0,0) rotate(0deg); }
+}
+
+/* Animasi Roket Meluncur */
+@keyframes rocketLaunch {
+    0% { transform: translateY(0); }
+    10% { transform: translateY(10px); } /* Sedikit ancang-ancang ke bawah */
+    100% { transform: translateY(-200vh); } /* Terbang jauh ke atas */
+}
+
+/* Efek Asap Tebal */
+.rocket-smoke {
+    transition: all 0.3s;
+    box-shadow: 
+        0 20px 30px 10px rgba(255, 255, 255, 0.6),
+        0 40px 60px 20px rgba(200, 200, 200, 0.4),
+        0 60px 90px 40px rgba(150, 150, 150, 0.2) !important;
+}
+
+.animasi-getar {
+    animation: rumble 0.1s infinite;
+}
+
+.animasi-meluncur {
+    animation: rocketLaunch 1.5s ease-in forwards;
+}
