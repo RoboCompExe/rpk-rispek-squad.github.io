@@ -641,60 +641,60 @@
 document.getElementById('enterBtn').addEventListener('click', function(e) {
     e.preventDefault();
     
+    // Pastikan suara jalan
     const bgm = document.getElementById("bgm");
-    if (bgm) bgm.play();
+    if (bgm) { bgm.play().catch(err => console.log("Audio play blocked")); }
 
     const logo = document.querySelector('.logo-img');
     const btn = this;
     const cover = document.getElementById('cover');
 
-    // Visual Feedback Tombol
-    btn.innerHTML = "LAUNCHING...";
+    // 1. Kunci tombol agar tidak diklik berkali-kali
     btn.disabled = true;
-    btn.style.opacity = "0.5";
+    btn.innerHTML = "LAUNCHING...";
 
-    // 1. Fase Getar (Intensitas Getar Tinggi)
+    // 2. Fase Getar
     logo.classList.add('animasi-getar');
 
     setTimeout(() => {
-        // 2. Fase Meluncur
+        // 3. Fase Meluncur
         logo.classList.remove('animasi-getar');
         logo.classList.add('animasi-meluncur');
         
-        // Sembunyikan tombol
-        btn.style.display = 'none';
+        btn.style.display = 'none'; // Sembunyikan tombol
 
-        // --- EFEK ASAP TEBAL (Dynamic Particles) ---
-        const createSmoke = setInterval(() => {
+        // --- EFEK ASAP TEBAL (SISTEM PARTIKEL) ---
+        let smokeInterval = setInterval(() => {
             const smoke = document.createElement('div');
-            smoke.classList.add('particle-smoke');
+            smoke.className = 'smoke-particle';
             
-            // Posisi asap tepat di bawah roket
+            // Posisi tepat di bawah roket
             const rect = logo.getBoundingClientRect();
-            smoke.style.left = (rect.left + rect.width / 2) + 'px';
-            smoke.style.top = (rect.bottom - 20) + 'px';
+            smoke.style.left = (rect.left + (rect.width / 2)) + 'px';
+            smoke.style.top = (rect.bottom) + 'px';
             
             document.body.appendChild(smoke);
 
-            // Hapus elemen asap setelah animasi selesai agar tidak berat
+            // Hapus partikel setelah 2 detik agar memori bersih
             setTimeout(() => smoke.remove(), 2000);
-        }, 50); // Membuat asap setiap 50ms (sangat tebal)
+        }, 30); // 30ms = Sangat rapat dan tebal
 
-        // 3. Efek Fade Out Cover
+        // 4. Hilangkan Cover (Fade Out)
         setTimeout(() => {
-            clearInterval(createSmoke); // Berhenti buat asap setelah roket hilang
-            cover.style.transition = "opacity 1.5s ease";
-            cover.style.opacity = '0';
-            
-            setTimeout(() => {
-                cover.style.display = 'none';
-            }, 1500);
-        }, 1200);
+            clearInterval(smokeInterval);
+            if(cover) {
+                cover.style.transition = "opacity 1s";
+                cover.style.opacity = "0";
+                setTimeout(() => cover.style.display = "none", 1000);
+            }
+        }, 1500);
     }, 4000); 
 });
+
     </script>
 </body>
 </html>
+
 
 
 
