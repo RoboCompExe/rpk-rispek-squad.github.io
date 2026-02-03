@@ -636,73 +636,19 @@
             });
         });
 
-        
-// Add animation rocket touch support for mobile
-document.getElementById('enterBtn').addEventListener('click', function(e) {
-    e.preventDefault();
-    
-    // Pastikan suara jalan
-    const bgm = document.getElementById("bgm");
-    if (bgm) { bgm.play().catch(err => console.log("Audio play blocked")); }
+        // Add touch support for mobile
+        document.addEventListener('touchstart', function() {}, { passive: true });
 
-    const logo = document.querySelector('.logo-img');
-    const btn = this;
-    const cover = document.getElementById('cover');
-
-    // 1. Kunci tombol agar tidak diklik berkali-kali
-    btn.disabled = true;
-    btn.innerHTML = "LAUNCHING...";
-
-    // 2. Fase Getar
-    logo.classList.add('animasi-getar');
-
-    setTimeout(() => {
-        // 3. Fase Meluncur
-        logo.classList.remove('animasi-getar');
-        logo.classList.add('animasi-meluncur');
-        
-        btn.style.display = 'none'; // Sembunyikan tombol
-
-        // --- EFEK ASAP TEBAL (SISTEM PARTIKEL) ---
-        let smokeInterval = setInterval(() => {
-            const smoke = document.createElement('div');
-            smoke.className = 'smoke-particle';
-            
-            // Posisi tepat di bawah roket
-            const rect = logo.getBoundingClientRect();
-            smoke.style.left = (rect.left + (rect.width / 2)) + 'px';
-            smoke.style.top = (rect.bottom) + 'px';
-            
-            document.body.appendChild(smoke);
-
-            // Hapus partikel setelah 2 detik agar memori bersih
-            setTimeout(() => smoke.remove(), 2000);
-        }, 30); // 30ms = Sangat rapat dan tebal
-
-        // 4. Hilangkan Cover (Fade Out)
-        setTimeout(() => {
-            clearInterval(smokeInterval);
-            if(cover) {
-                cover.style.transition = "opacity 1s";
-                cover.style.opacity = "0";
-                setTimeout(() => cover.style.display = "none", 1000);
-            }
-        }, 1500);
-    }, 4000); 
+        document.getElementById("enterBtn").addEventListener("click", () => {
+    document.getElementById("cover").style.display = "none";
+    document.getElementById("mainContent").classList.remove("hidden");
 });
 
+document.getElementById("enterBtn").addEventListener("click", () => {
+    document.getElementById("cover").style.display = "none";
+    document.getElementById("mainContent").classList.remove("hidden");
+    document.getElementById("bgm").play();
+});
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
