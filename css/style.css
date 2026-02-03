@@ -118,3 +118,47 @@
     animation: rpkGlow 5s ease-in-out infinite;
 }
 
+/* Cover Fullscreen */
+.cover {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle, #0f172a, #000);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* Isi Cover */
+.cover-content {
+    text-align: center;
+}
+
+/* Judul */
+.title {
+    font-size: 3rem;
+    color: #e5e7eb;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+}
+
+/* Tombol */
+.enter-btn {
+    padding: 14px 36px;
+    font-size: 1.1rem;
+    color: #fff;
+    background: transparent;
+    border: 2px solid #ef4444;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.enter-btn:hover {
+    background: #ef4444;
+    box-shadow: 0 0 20px #ef4444;
+}
+
+/* Sembunyikan isi web */
+.hidden {
+    display: none;
+}
